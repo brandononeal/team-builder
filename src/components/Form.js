@@ -1,5 +1,11 @@
 import React, { useState } from "react";
 
+const teamList = [
+  { name: "Randi", email: "randi@gmail.com", role: "UX/UI Designer" },
+  { name: "Carolina", email: "carolina@gmail.com", role: "Frontend Engineer" },
+  { name: "Hector", email: "hector@gmail.com", role: "Backend Engineer" },
+];
+
 const initialFormValues = {
   name: "",
   email: "",
@@ -7,7 +13,7 @@ const initialFormValues = {
 };
 
 function Form() {
-  const [teamMembers, setTeamMembers] = useState([]);
+  const [teamMembers, setTeamMembers] = useState(teamList);
   const [formValues, setFormValues] = useState(initialFormValues);
 
   const change = (evt) => {
@@ -70,6 +76,18 @@ function Form() {
         >
           Submit
         </button>
+        {teamMembers.map((teamMember) => {
+          return (
+            <div>
+              <br />
+              Name: {teamMember.name}
+              <br />
+              Email: {teamMember.email}
+              <br />
+              Role: {teamMember.role}
+            </div>
+          );
+        })}
       </form>
     </div>
   );
