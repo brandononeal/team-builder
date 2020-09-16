@@ -1,36 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 
-const teamList = [
-  { name: "Randi", email: "randi@gmail.com", role: "UX/UI Designer" },
-  { name: "Carolina", email: "carolina@gmail.com", role: "Frontend Engineer" },
-  { name: "Hector", email: "hector@gmail.com", role: "Backend Engineer" },
-];
-
-const initialFormValues = {
-  name: "",
-  email: "",
-  role: "",
-};
-
-function Form() {
-  const [teamMembers, setTeamMembers] = useState(teamList);
-  const [formValues, setFormValues] = useState(initialFormValues);
-
-  const change = (evt) => {
-    const { name, value } = evt.target;
-    setFormValues({ ...formValues, [name]: value });
-  };
-
-  const submit = (evt) => {
-    evt.preventDefault();
-    const newTeamMember = {
-      name: formValues.name.trim(),
-      email: formValues.email.trim(),
-      role: formValues.role,
-    };
-    setTeamMembers([...teamMembers, newTeamMember]);
-    setFormValues(initialFormValues);
-  };
+function Form(props) {
+  const { change, submit, edit, teamMembers, memberToEdit, formValues } = props;
 
   return (
     <div className="App">
@@ -78,13 +49,11 @@ function Form() {
         </button>
         {teamMembers.map((teamMember) => {
           return (
-            <div>
-              <br />
-              Name: {teamMember.name}
-              <br />
-              Email: {teamMember.email}
-              <br />
-              Role: {teamMember.role}
+            <div className="team-member-container">
+              <p>Name: {teamMember.name}</p>
+              <p>Email: {teamMember.email}</p>
+              <p>Role: {teamMember.role}</p>
+              <button onClick={edit}>Edit</button>
             </div>
           );
         })}

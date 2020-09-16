@@ -36,3 +36,10 @@
     transform: rotate(360deg);
   }
 }
+
+.team-member-container {
+  border: 2px solid black;
+  margin: 1% auto;
+  padding-bottom: 3%;
+  width: 50%;
+}
