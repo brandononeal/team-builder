@@ -33,7 +33,7 @@ function Form(props) {
 
         <label>
           Role:{" "}
-          <select name="role" onChange={change}>
+          <select name="role" value={formValues.role} onChange={change}>
             <option value="">--- select role ---</option>
             <option value="UX/UI Designer">UX/UI Designer</option>
             <option value="Frontend Engineer">Frontend Engineer</option>
